@@ -275,22 +275,32 @@ void loop()
     float temp9 = 0;
     float temp10 = 0;
 
-    //温度取得　2チャンネルあるI2Cバスを交互に使って負荷を落とす
-    get_temperature1(&temp1, sensor1);
-    get_temperature(&temp6, sensor6);
+    //温度取得　2チャンネルあるI2Cバスを交互に使って負荷を落とす  // commented out 
+//    get_temperature1(&temp1, sensor1);
+//    get_temperature(&temp6, sensor6);
+//
+//    get_temperature1(&temp2, sensor2);
+//    get_temperature(&temp7, sensor7);
+//
+//    get_temperature1(&temp3, sensor3);
+//    get_temperature(&temp8, sensor8);
+//
+//    get_temperature1(&temp4, sensor4);
+//    get_temperature(&temp9, sensor9);
+//
+//    get_temperature1(&temp5, sensor5);
+//    get_temperature(&temp10, sensor10);
 
-    get_temperature1(&temp2, sensor2);
-    get_temperature(&temp7, sensor7);
-
-    get_temperature1(&temp3, sensor3);
-    get_temperature(&temp8, sensor8);
-
-    get_temperature1(&temp4, sensor4);
-    get_temperature(&temp9, sensor9);
-
-    get_temperature1(&temp5, sensor5);
-    get_temperature(&temp10, sensor10);
-
+    temp1=random(20,25);  // random temp 20~25
+    temp2=random(20,25);
+    temp3=random(20,25);
+    temp4=random(20,25);
+    temp5=random(20,25);
+    temp6=random(20,25);
+    temp7=random(20,25);
+    temp8=random(20,25);
+    temp9=random(20,25);
+    temp10=random(20,25);
 
     //ディスプレイ表示関係
     img.createSprite(150, 110);
@@ -361,8 +371,8 @@ void loop()
     img.deleteSprite();
 
     //シリアル出力
-    if (FG_SERIALOUT) {
-      sprintf(buf, "%02d:%02d:%02d.%01d,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f"
+   // if (FG_SERIALOUT) { commend out
+    sprintf(buf, "%02d:%02d:%02d.%01d,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f,%4.4f"
               , nowtime.t_hour
               , nowtime.t_min
               , nowtime.t_sec
@@ -378,8 +388,8 @@ void loop()
               , temp9
               , temp10
              );
-      Serial.println(buf);
-    }
+    Serial.println(buf);
+   // } commend out
 
     ticked = false;
   }
